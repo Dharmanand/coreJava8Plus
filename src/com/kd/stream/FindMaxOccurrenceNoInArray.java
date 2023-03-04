@@ -32,6 +32,15 @@ public class FindMaxOccurrenceNoInArray {
 		int maxCountNo = map1.entrySet().stream().sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue())).findFirst()
 				.get().getKey();
 		System.out.println(maxCountNo); // output : 5
+		//------------------------------------------------
+		
+		arr = { 1, 1, 1, 4, 4, 5, 5, 5, 5, 5, 9, 9, 9, 9, 9, 9, 9 };
+
+		Entry<Integer, Long> value = Arrays.stream(arr).mapToObj(i -> i)
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet().stream()
+				.sorted((c1, c2) -> c2.getValue().compareTo(c1.getValue())).findFirst().get();
+		
+		System.out.println(value); // output : 9=7
 	}
 
 }

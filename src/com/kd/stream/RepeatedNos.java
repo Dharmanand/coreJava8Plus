@@ -13,6 +13,10 @@ public class RepeatedNos {
 		
 		Map<Integer, Long> output = list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		System.out.println(output);
+		//------------
+		System.out.println(list.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet()
+				.stream().filter(e -> e.getValue() > 1).collect(Collectors.toList()));//Output : [2=2, 4=2, 25=2, 11=2]
 	}
 
 }

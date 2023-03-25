@@ -3,6 +3,7 @@ package com.kd.stream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -34,9 +35,9 @@ public class FindMaxOccurrenceNoInArray {
 		System.out.println(maxCountNo); // output : 5
 		//------------------------------------------------
 		
-		arr = { 1, 1, 1, 4, 4, 5, 5, 5, 5, 5, 9, 9, 9, 9, 9, 9, 9 };
+		int[] arr1 = { 1, 1, 1, 4, 4, 5, 5, 5, 5, 5, 9, 9, 9, 9, 9, 9, 9 };
 
-		Entry<Integer, Long> value = Arrays.stream(arr).mapToObj(i -> i)
+		Entry<Integer, Long> value = Arrays.stream(arr1).mapToObj(i -> i)
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet().stream()
 				.sorted((c1, c2) -> c2.getValue().compareTo(c1.getValue())).findFirst().get();
 		

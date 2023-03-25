@@ -31,7 +31,12 @@ public class SortMapByEmployeeSalary {
 				.sorted(Map.Entry.comparingByValue((o1, o2) -> o2.getSalary().compareTo(o1.getSalary())))
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (v1, v2) -> v1, LinkedHashMap::new));
 		System.out.println(sortedMap);
-		
+		// OR
+		sortedMap = map.entrySet().stream()
+				.sorted(Map.Entry.comparingByValue((o1, o2) -> o2.getSalary().compareTo(o1.getSalary())))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v1, LinkedHashMap::new));
+		System.out.println(sortedMap);
+
 //		outpot :
 //			Kumar : 200000
 //			John : 150000
@@ -40,7 +45,7 @@ public class SortMapByEmployeeSalary {
 //			Peter : 90000
 //			Tod : 50000
 //			{Kumar=Employee [id=103, name=Kumar, city=Bangalore, age=22, salary=200000], John=Employee [id=101, name=John, city=Bangalore, age=34, salary=150000], Rahul=Employee [id=104, name=Rahul, city=Chennai, age=30, salary=120000], Kiran=Employee [id=105, name=Kiran, city=Chennai, age=27, salary=100000], Peter=Employee [id=102, name=Peter, city=Delhi, age=26, salary=90000], Tod=Employee [id=106, name=Tod, city=Bangalore, age=24, salary=50000]}
-
+//			{Kumar=Employee [id=103, name=Kumar, city=Bangalore, age=22, salary=200000], John=Employee [id=101, name=John, city=Bangalore, age=34, salary=150000], Rahul=Employee [id=104, name=Rahul, city=Chennai, age=30, salary=120000], Kiran=Employee [id=105, name=Kiran, city=Chennai, age=27, salary=100000], Peter=Employee [id=102, name=Peter, city=Delhi, age=26, salary=90000], Tod=Employee [id=106, name=Tod, city=Bangalore, age=24, salary=50000]}
 
 	}
 
